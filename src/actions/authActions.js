@@ -7,23 +7,20 @@ export function attemptLogin() {
     return (dispatch, getState) => {
 		dispatch({type:types.ATTEMPTING_LOGIN});
         firebase.auth().signInWithPopup(provider).then(authData => {
-          
-             console.log('authData - ',authData)
-
-        }).catch(function(error) {
+        //nothing here yet
+        }).catch(error => {
              dispatch({type:types.DISPLAY_ERROR, error:"Login failed! "+error});
              dispatch({type:types.LOGOUT});
         });
-    }
+    };
 }
 
 export function logoutUser() {
-		return (dispatch,getState) => {
-			
+		return (dispatch,getState) => {			
 			firebase.auth().signOut().then(() => { 
                  dispatch({type:types.LOGOUT}); // don't really need to do this, but nice to get immediate feedback   
             });
-		}
+		};
 }
 
 export function startListeningToAuth() {
@@ -44,5 +41,5 @@ export function startListeningToAuth() {
                 }
             }
         });
-    }  
+    }; 
 }

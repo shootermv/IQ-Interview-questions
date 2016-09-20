@@ -11,11 +11,12 @@ class Authpanel extends React.Component {
 
   render() {
 
-    const {auth} = this.props;  
-      console.log(': ',auth)
-    switch(auth.currently){
-		   case types.LOGIN_USER: return <a className="pull-right" onClick={this.props.logoutUser}>hi {auth.username}</a>;
-       case types.AWAITING_AUTH_RESPONSE:  return <a className="pull-right" ><i className="fa fa-spinner fa-spin"></i> authenticating...</a>;      
+    const {auth} = this.props;
+    switch(auth.currently) {
+        case types.LOGIN_USER :
+        return (<a className="pull-right" onClick={this.props.logoutUser}>hi {auth.username}</a>);
+        case types.AWAITING_AUTH_RESPONSE :
+        return (<a className="pull-right"><i className="fa fa-spinner fa-spin"></i> authenticating...</a>);      
        default: return <a className="pull-right" onClick={this.props.attemptLogin}>Log in</a>;
     }
   }
@@ -24,13 +25,13 @@ class Authpanel extends React.Component {
 function mapStateToProps(appState){
 	// This component will have access to `appState.auth` through `this.props.auth`
 	return {auth:appState.auth};
-};
+}
 
 function mapDispatchToProps(dispatch){
 	return {
 		attemptLogin: function(){ dispatch(authActions.attemptLogin()); },
 		logoutUser: function(){ dispatch(authActions.logoutUser()); }
 	};
-};
+}
 
 export default connect(mapStateToProps,mapDispatchToProps)(Authpanel);
