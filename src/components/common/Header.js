@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 import { Link, IndexLink } from 'react-router';
 import LoadingDots from './LoadingDots';
+import Authpanel from './Authpanel';
 
 const Header = ({loading}) => {
   return (
@@ -13,6 +14,8 @@ const Header = ({loading}) => {
         <span className="glyphicon glyphicon-search"> </span> 
       </Link>
       {loading && <LoadingDots interval={100} dots={20}/>}
+
+      <Authpanel/>
     </nav>
   );
 };
