@@ -18,7 +18,12 @@ export function attemptLogin() {
 }
 
 export function logoutUser() {
-    return null;
+		return (dispatch,getState) => {
+			
+			firebase.auth().signOut().then(() => { 
+                 dispatch({type:types.LOGOUT}); // don't really need to do this, but nice to get immediate feedback   
+            });
+		}
 }
 
 export function startListeningToAuth() {
@@ -27,7 +32,7 @@ export function startListeningToAuth() {
         dispatch({type:types.LOGOUT});
         firebase.auth().onAuthStateChanged((authData)=>{
             if (authData){
-                console.log('auth: ',authData) 
+                //console.log('auth: ',authData) 
                 dispatch({
                     type: types.LOGIN_USER,
                     uid: authData.uid,
