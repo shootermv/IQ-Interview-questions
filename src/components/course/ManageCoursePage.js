@@ -107,8 +107,8 @@ function mapStateToProps(state, ownProps) {
 
   let course = {id: '', watchHref: '', title: '', authorId: '', length: '', category: ''};
 
-  if (courseId && state.courses.length > 0) {
-    course = getCourseById(state.courses, courseId);
+  if (courseId && state.questions.length > 0) {
+    course = getCourseById(state.questions, courseId);
   }
 
   return {

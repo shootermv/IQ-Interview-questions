@@ -9,6 +9,7 @@ import routes from './routes';
 import {loadCourses} from './actions/courseActions';
 import {loadAuthors} from './actions/authorActions';
 import {loadGroups} from './actions/groupActions';
+import {loadQuestions} from './actions/questionActions';
 import {startListeningToAuth}  from './actions/authActions';
 
 import './styles/styles.css'; //Webpack can import CSS files too!
@@ -16,7 +17,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/toastr/build/toastr.min.css';
 
 const store = configureStore();
-store.dispatch(loadCourses());
+store.dispatch(loadQuestions());
 store.dispatch(loadAuthors());
 store.dispatch(loadGroups());
 //auth:

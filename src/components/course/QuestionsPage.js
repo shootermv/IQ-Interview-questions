@@ -1,18 +1,14 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as courseActions from '../../actions/courseActions';
+import * as questionActions from '../../actions/questionActions';
 import CourseList from './CourseList';
 import {browserHistory} from 'react-router';
 
-class CoursesPage extends React.Component {
+class QuestionsPage extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.redirectToAddCoursePage = this.redirectToAddCoursePage.bind(this);
-  }
-
-  courseRow(course, index) {
-    return <div key={index}>{course.title}</div>;
   }
 
   redirectToAddCoursePage() {
@@ -20,7 +16,8 @@ class CoursesPage extends React.Component {
   }
 
   render() {
-    const {courses} = this.props;
+    
+    const {questions} = this.props;
 
     return (
       <div>
@@ -29,27 +26,27 @@ class CoursesPage extends React.Component {
                value="Add Question"
                className="btn btn-primary"
                onClick={this.redirectToAddCoursePage}/>
-        <CourseList courses={courses}/>
+        <CourseList courses={questions}/>
       </div>
     );
   }
 }
 
-CoursesPage.propTypes = {
-  courses: PropTypes.array.isRequired,
+QuestionsPage.propTypes = {
+  questions: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
 };
 
-function mapStateToProps(state, ownProps) {
-  return {
-    courses: state.courses
+function mapStateToProps(state, ownProps) {  
+  return {    
+    questions: state.questions
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(courseActions, dispatch)
+    actions: bindActionCreators(questionActions, dispatch)
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CoursesPage);
+export default connect(mapStateToProps, mapDispatchToProps)(QuestionsPage);
