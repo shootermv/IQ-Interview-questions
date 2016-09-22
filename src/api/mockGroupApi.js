@@ -38,6 +38,7 @@ class GroupApi {
     const ref = fireBaseInit.ref('tikalGroups');
     return new Promise((resolve, reject) => {
         ref.on("value", (data)=> {
+          console.log('DATA!')
           resolve(this.convertToArray(data.val()));
         });
     });

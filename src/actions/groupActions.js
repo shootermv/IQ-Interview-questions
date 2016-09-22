@@ -7,12 +7,16 @@ export function loadGroupsSuccess(groups) {
 }
 
 export function loadGroups() {
-  return dispatch => {
-    dispatch(beginAjaxCall());
-    return GroupApi.getAllGroups().then(groups => {
-      dispatch(loadGroupsSuccess(groups));
-    }).catch(error => {
-      throw(error);
-    });
+  return (dispatch, getState) => {
+    if (getState().auth.currently !== 'ANONYMOUS'){
+      dispatch(beginAjaxCall());
+      return GroupApi.getAllGroups().then(groups => {
+        dispatch(loadGroupsSuccess(groups));
+      }).catch(error => {
+        throw(error);
+      });
+    } else {
+
+    }
   };
 }

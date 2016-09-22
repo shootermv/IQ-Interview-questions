@@ -19,7 +19,7 @@ import '../node_modules/toastr/build/toastr.min.css';
 const store = configureStore();
 store.dispatch(loadQuestions());
 store.dispatch(loadAuthors());
-store.dispatch(loadGroups());
+//store.dispatch(loadGroups());
 //auth:
 store.dispatch(startListeningToAuth());
 

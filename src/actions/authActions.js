@@ -1,5 +1,6 @@
 import * as types from './actionTypes';
 import firebase from 'firebase';
+import {loadGroups} from './groupActions';
 const provider = new firebase.auth.GoogleAuthProvider();
 
 
@@ -35,6 +36,7 @@ export function startListeningToAuth() {
                     uid: authData.uid,
                     username: authData.displayName 
                 });
+                dispatch(loadGroups()); 
             } else {
                 if (getState().auth.currently !== 'ANONYMOUS'){ // log out if not already logged out
                     dispatch({type:types.LOGOUT});

@@ -16,7 +16,7 @@ class HomePage extends React.Component {
     
     return (
       <div className="jumbotron">
-       <h1>Groups</h1>
+       {groups.length>0 && <h1>Groups</h1>}
         <GroupList groups={groups}/>
       </div>
     );
