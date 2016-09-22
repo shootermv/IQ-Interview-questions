@@ -16,7 +16,7 @@ const Header = ({loading, loggedin}) => {
 
 Header.propTypes = {
   loading: PropTypes.bool.isRequired,
-  loggedin: PropTypes.bool.isRequired,
+  loggedin: PropTypes.bool.isRequired
 };
 
 export default Header;
