@@ -15,8 +15,6 @@ export function loadGroups() {
       }).catch(error => {
         throw(error);
       });
-    } else {
-
     }
   };
 }
