@@ -3,16 +3,10 @@ import { Link, IndexLink } from 'react-router';
 import LoadingDots from './LoadingDots';
 import Authpanel from './Authpanel';
 
-const Header = ({loading}) => {
+const Header = ({loading, loggedin}) => {
   return (
     <nav>
-      <IndexLink to="/" activeClassName="active">Groups</IndexLink>
-      {" | "}
-      <Link to="/courses" activeClassName="active">Questions</Link>
-      {" | "}
-      <Link to="/about" activeClassName="active">
-        <span className="glyphicon glyphicon-search"> </span> 
-      </Link>
+      {loggedin ? <IndexLink to="/" activeClassName="active">Groups</IndexLink> : <i>&nbsp;</i>}
       {loading && <LoadingDots interval={100} dots={20}/>}
 
       <Authpanel/>
@@ -21,7 +15,8 @@ const Header = ({loading}) => {
 };
 
 Header.propTypes = {
-  loading: PropTypes.bool.isRequired
+  loading: PropTypes.bool.isRequired,
+  loggedin: PropTypes.bool.isRequired,
 };
 
 export default Header;

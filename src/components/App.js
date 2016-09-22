@@ -8,7 +8,7 @@ class App extends React.Component {
     return (
       <div className="container-fluid">
         <Header
-          loading={this.props.loading}
+          loading={this.props.loading} loggedin={this.props.loggedin}
         />
         {this.props.children}
       </div>
@@ -23,7 +23,8 @@ App.propTypes = {
 
 function mapStateToProps(state, ownProps) {
   return {
-    loading: state.ajaxCallsInProgress > 0
+    loading: state.ajaxCallsInProgress > 0,
+    loggedin: state.auth.currently !== 'ANONYMOUS'
   };
 }
 
