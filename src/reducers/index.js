@@ -1,5 +1,6 @@
 import {combineReducers} from 'redux';
 import courses from './courseReducer';
+import companies from './companyReducer';
 import authors from './authorReducer';
 import auth from './authReducer';
 import groups from './groupReducer';
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   groups,
   auth,
   questions,
+  companies,
   ajaxCallsInProgress
 });
 

@@ -3,6 +3,7 @@ export default {
   courses: [],
   groups: [],
 	questions: [],
+	companies: [],
   ajaxCallsInProgress: 0,
 	auth: {
 		currently: 'ANONYMOUS',

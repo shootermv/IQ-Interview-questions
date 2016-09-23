@@ -9,9 +9,9 @@ const GroupListItem = ({group}) => {
   };
   return (
         <div className="col-md-3 col-xs-6">
-           <a href="#" className="thumbnail"> 
-             {group.name}            
-           </a> 
+           <Link to={'/companies/' + group.id} className="thumbnail">
+             {group.name}
+           </Link>
         </div>
   );
 };
