@@ -31,7 +31,7 @@ const groups = [
 class GroupApi {
   static convertToArray(data) {
     return Object.keys(data).map(x => { 
-      return {id: x, name: data[x].name}
+      return {id: data[x].id, name: data[x].name}
     }) 
   }
   static getAllGroups() {
