@@ -10,7 +10,7 @@ import ManageCoursePage from './components/course/ManageCoursePage'; //eslint-di
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={HomePage} />
-    <Route path="companies/:group" component={CompaniesPage} />
+    <Route path="companies/:groupId" component={CompaniesPage} />
     <Route path="courses" component={QuestionsPage} />
     <Route path="company" component={ManageCoursePage} />
     <Route path="course/:id" component={ManageCoursePage} />

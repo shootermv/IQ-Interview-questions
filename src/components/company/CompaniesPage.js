@@ -17,7 +17,7 @@ class CompaniesPage extends React.Component {
     browserHistory.push('/company');
   }
   componentDidMount () {
-    this.props.loadCompanies();
+    this.props.loadCompanies(this.props.params.groupId);
   }
   render() {
     const {companies} = this.props;
