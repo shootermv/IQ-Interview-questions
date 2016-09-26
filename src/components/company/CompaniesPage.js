@@ -9,16 +9,22 @@ import CompanyList from './CompanyList';
 
 class CompaniesPage extends React.Component {
   constructor(props, context) {
+    // save group name in localstorage
+    
     super(props, context);
   }
   componentDidMount () {
-    this.props.loadCompanies(this.props.params.groupId);
+
+    localStorage.setItem("currentGroup", this.props.params.groupId);
+    this.props.loadCompanies();
+
   }
   render() {
+    console.log("this ", this)
     const {companies} = this.props;
-    
+    console.log(companies);
     return (
-    <CompanyList companies={companies}/>
+      <CompanyList companies={companies}/>
     );
   }
 }
