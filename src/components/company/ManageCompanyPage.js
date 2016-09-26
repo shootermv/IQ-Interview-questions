@@ -102,7 +102,7 @@ function getCompanyById(companies, id) {
 function mapStateToProps(state, ownProps) {
   const companyId = ownProps.params.id; // from the path `/course/:id`
 
-  let company = {id: '', name: '',  descrption: '', website: ''};
+  let company = {id: '', name: '',  description: '', website: ''};
   return {
     company
   };
