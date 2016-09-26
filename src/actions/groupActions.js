@@ -11,6 +11,7 @@ export function loadGroups() {
     if (getState().auth.currently !== 'ANONYMOUS'){
       dispatch(beginAjaxCall());
       return GroupApi.getAllGroups().then(groups => {
+        localStorage.setItem("groupsList", JSON.stringify(groups));
         dispatch(loadGroupsSuccess(groups));
       }).catch(error => {
         throw(error);

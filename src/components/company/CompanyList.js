@@ -12,8 +12,8 @@ const CompanyList = ({companies}) => {
       </tr>
       </thead>
       <tbody>
-      {companies.map(company =>
-        <CompanyListRow key={company.id} company={company}/>
+      {Object.keys(companies).map(company =>
+        <CompanyListRow key={companies[company].id} company={companies[company]}/>
       )}
       </tbody>
     </table>
@@ -21,7 +21,7 @@ const CompanyList = ({companies}) => {
 };
 
 CompanyList.propTypes = {
-  companies: PropTypes.array.isRequired
+  companies: PropTypes.object.isRequired
 };
 
 export default CompanyList;

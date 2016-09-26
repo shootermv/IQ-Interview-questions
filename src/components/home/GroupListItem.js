@@ -2,6 +2,7 @@ import React, {PropTypes} from 'react';
 import {Link} from 'react-router';
 
 const GroupListItem = ({group}) => {
+  console.log("test--> ", group);
   var divStyle = {
     height: '180px',
     width: '100%',
