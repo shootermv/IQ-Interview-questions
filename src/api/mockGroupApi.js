@@ -10,7 +10,9 @@ import fireBaseInit from './fbInit';
 class GroupApi {
   static convertToArray(data) {
     return Object.keys(data).map(x => { 
+
       return {id: x, name: data[x].name, companies: data[x].companies}
+
     }) 
   }
   static getAllGroups() {

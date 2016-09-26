@@ -1,4 +1,4 @@
-import GroupApi from '../api/mockCompanyApi';
+import GroupApi from '../api/CompanyApi';
 import * as types from './actionTypes';
 import {beginAjaxCall} from './ajaxStatusActions';
 
@@ -6,6 +6,7 @@ export function loadCompaniesSuccess(companies) {
  
   return {type: types.LOAD_COMPANIES_SUCCESS, companies};
 }
+
 
 export function loadCompanies(a) {
   console.log('here', localStorage.getItem("currentGroup"));
@@ -18,10 +19,16 @@ export function loadCompanies(a) {
       currentGroupObj = groupsList[item];
     }
   }
+
   return (dispatch, getState) => {
       dispatch(beginAjaxCall());
+
       var companiesList = GroupApi.getAllCompanies(currentGroupObj);
       console.log(companiesList);
        dispatch(loadCompaniesSuccess(companiesList));    
+
+      
+    
+
   };
 }

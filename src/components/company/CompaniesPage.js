@@ -14,14 +14,17 @@ class CompaniesPage extends React.Component {
     super(props, context);
   }
   componentDidMount () {
-    localStorage.setItem("currentGroup", this.props.params.group);
+
+    localStorage.setItem("currentGroup", this.props.params.groupId);
     this.props.loadCompanies();
+
   }
   render() {
+    console.log("this ", this)
     const {companies} = this.props;
-    
+    console.log(companies);
     return (
-    <CompanyList companies={companies}/>
+      <CompanyList companies={companies}/>
     );
   }
 }
