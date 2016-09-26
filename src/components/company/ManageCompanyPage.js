@@ -38,8 +38,8 @@ export class ManageCompanyPage extends React.Component {
     let formIsValid = true;
     let errors = {};
 
-    if (this.state.company.title.length < 5) {
-      errors.title = 'Title must be at least 5 characters.';
+    if (this.state.company.name.length < 5) {
+      errors.name = 'Title must be at least 5 characters.';
       formIsValid = false;
     }
 
@@ -56,7 +56,7 @@ export class ManageCompanyPage extends React.Component {
     }
 
     this.setState({saving: true});
-
+   
     this.props.actions.saveCompany(this.state.company)
       .then(() => this.redirect())
       .catch(error => {
@@ -68,13 +68,12 @@ export class ManageCompanyPage extends React.Component {
   redirect() {
     this.setState({saving: false});
     toastr.success('Company saved');
-    this.context.router.push('/companies');
+    this.context.router.push('/companies/javascript');
   }
 
   render() {
     return (
       <CompanyForm
-        allAuthors={this.props.authors}
         onChange={this.updateCompanyState}
         onSave={this.saveCompany}
         company={this.state.company}
@@ -86,7 +85,6 @@ export class ManageCompanyPage extends React.Component {
 }
 ManageCompanyPage.propTypes = {
   company: PropTypes.object.isRequired,
-  authors: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
 };
 
@@ -104,15 +102,9 @@ function getCompanyById(companies, id) {
 function mapStateToProps(state, ownProps) {
   const companyId = ownProps.params.id; // from the path `/course/:id`
 
-  let company = {id: '', watchHref: '', title: '', authorId: '', length: '', category: ''};
-
-  if (companyId && state.questions.length > 0) {
-    company  = getCompanyById(state.questions, companyId);
-  }
-
+  let company = {id: '', name: '',  descrption: '', website: ''};
   return {
-    company: company,
-    authors: authorsFormattedForDropdown(state.authors)
+    company
   };
 }
 

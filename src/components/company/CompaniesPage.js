@@ -42,7 +42,6 @@ function mapStateToProps(state, ownProps) {
 }
 
 function mapDispatchToProps(dispatch) {
-  
   return {
     loadCompanies: bindActionCreators(companyActions.loadCompanies, dispatch)
   };

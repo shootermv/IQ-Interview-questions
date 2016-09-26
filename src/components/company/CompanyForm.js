@@ -2,10 +2,10 @@ import React from 'react';
 import TextInput from '../common/TextInput';
 import SelectInput from '../common/SelectInput';
 
-const CompanyForm = ({company, allAuthors, onSave, onChange, saving, errors}) => {
+const CompanyForm = ({company, onSave, onChange, saving, errors}) => {
   return (
     <form>
-      <h1>Manage Company</h1>
+      <h1>Add Company</h1>
       <TextInput
         name="name"
         label="Name"
@@ -13,27 +13,19 @@ const CompanyForm = ({company, allAuthors, onSave, onChange, saving, errors}) =>
         onChange={onChange}
         error={errors.name}/>
 
-      <SelectInput
-        name="authorId"
-        label="Author"
-        value={company.authorId}
-        defaultOption="Select Author"
-        options={allAuthors}
-        onChange={onChange} error={errors.authorId}/>
+      <TextInput
+        name="description"
+        label="Description"
+        value={company.description}
+        onChange={onChange}
+        error={errors.description}/>
 
       <TextInput
-        name="category"
-        label="Category"
-        value={company.category}
+        name="website"
+        label="Website"
+        value={company.website}
         onChange={onChange}
-        error={errors.category}/>
-
-      <TextInput
-        name="length"
-        label="Company"
-        value={company.length}
-        onChange={onChange}
-        error={errors.length}/>
+        error={errors.website}/>
 
       <input
         type="submit"
@@ -47,7 +39,6 @@ const CompanyForm = ({company, allAuthors, onSave, onChange, saving, errors}) =>
 
 CompanyForm.propTypes = {
   company: React.PropTypes.object.isRequired,
-  allAuthors: React.PropTypes.array,
   onSave: React.PropTypes.func.isRequired,
   onChange: React.PropTypes.func.isRequired,
   saving: React.PropTypes.bool,

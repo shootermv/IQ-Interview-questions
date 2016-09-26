@@ -5,7 +5,7 @@ class CompanyApi {
   static convertToArray(data, ids) {
     let arr = [];
     Object.keys(data).map(x => { 
-      if(ids[x]){//filtering only companies of this group
+      if(ids[x]){//filtering only companies belongs to this group
         arr.push({id: x, name: x, description: data[x].description});
       }
     });
@@ -16,7 +16,7 @@ class CompanyApi {
     return new Promise((resolve, reject) => {
         ref.on("value", (data)=> {
           if(data.val()) {
-            let ids = data.val();//<--ids of companies othis group
+            let ids = data.val();//<--ids of companies of this group
             fireBaseInit.ref(`companies`).on("value", (compData)=> {
                resolve(this.convertToArray(compData.val(), ids));
             })
@@ -26,5 +26,15 @@ class CompanyApi {
         });
     });
   }
+
+  static saveCompany(company) {
+    return new Promise((resolve, reject) => {
+      resolve(company)
+    });
+  }
+
 }
+
+
+
 export default CompanyApi;
