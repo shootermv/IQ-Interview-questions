@@ -14,9 +14,7 @@ class CompaniesPage extends React.Component {
     super(props, context);
   }
   componentDidMount () {
-
-    localStorage.setItem("currentGroup", this.props.params.groupId);
-    this.props.loadCompanies();
+    this.props.loadCompanies(this.props.params.groupId);
 
   }
   render() {
@@ -36,7 +34,6 @@ function mapStateToProps(state, ownProps) {
 }
 
 function mapDispatchToProps(dispatch) {
-  
   return {
     loadCompanies: bindActionCreators(companyActions.loadCompanies, dispatch)
   };

@@ -1,16 +1,26 @@
-import GroupApi from '../api/CompanyApi';
+import CompanyApi from '../api/CompanyApi';
 import * as types from './actionTypes';
 import {beginAjaxCall} from './ajaxStatusActions';
 
 export function loadCompaniesSuccess(companies) {
- 
   return {type: types.LOAD_COMPANIES_SUCCESS, companies};
 }
 
+export function saveCompaniesSuccess() {
+  return {type: types.SAVE_COMPANIES_SUCCESS};
+}
 
-export function loadCompanies(a) {
-  console.log('here', localStorage.getItem("currentGroup"));
-  var currentGroupName = localStorage.getItem("currentGroup");
+export function saveNewCompany(companyObj){
+  //return (dispatch, getState) => {
+      console.log("here");
+      //dispatch(beginAjaxCall());
+      CompanyApi.saveCompany(companyObj);
+      //dispatch(saveCompaniesSuccess(companiesList));    
+  //};
+}
+
+export function loadCompanies(groupId) {
+  var currentGroupName = groupId;
   var currentGroupObj = null;
   var groupsList = JSON.parse(localStorage.getItem("groupsList"));
   var groupIndex = 0;
@@ -22,13 +32,7 @@ export function loadCompanies(a) {
 
   return (dispatch, getState) => {
       dispatch(beginAjaxCall());
-
-      var companiesList = GroupApi.getAllCompanies(currentGroupObj);
-      console.log(companiesList);
-       dispatch(loadCompaniesSuccess(companiesList));    
-
-      
-    
-
+      var companiesList = CompanyApi.getAllCompanies(currentGroupObj);
+      dispatch(loadCompaniesSuccess(companiesList));    
   };
 }

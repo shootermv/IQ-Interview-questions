@@ -1,5 +1,6 @@
 import delay from './delay';
-
+import firebase from 'firebase';
+import fireBaseInit from './fbInit';
 
 function replaceAll(str, find, replace) {
   return str.replace(new RegExp(find, 'g'), replace);
@@ -15,9 +16,20 @@ class CompanyApi {
     return currentGroupObj.companies;
   }
 
-  static saveCompany(company) {
+  static saveNewCompany(company) {
+    console.log("company ", company);
     company = Object.assign({}, company); // to avoid manipulating object passed in.
-    return new Promise((resolve, reject) => {
+
+    const companiesRef = fireBaseInit.ref('companies');
+    var newCompany = {};
+    newCompany[company.name].name = company.name;
+    newCompany[company.name].description = company.description;
+    console.log("newCompany--> ", newCompany);
+    companiesRef.set({newCompany});  
+    
+
+
+    /*return new Promise((resolve, reject) => {
       setTimeout(() => {
         // Simulate server-side validation
         const minCompanyTitleLength = 1;
@@ -26,8 +38,8 @@ class CompanyApi {
         }
 
         if (company.id) {
-          const existingCompanyIndex = companies.findIndex(a => a.id == company.id);
-          companies.splice(existingCompanyIndex, 1, company);
+          //const existingCompanyIndex = companies.findIndex(a => a.id == company.id);
+          //companies.splice(existingCompanyIndex, 1, company);
         } else {
           //Just simulating creation here.
           //The server would generate ids and watchHref's for new companies in a real app.
@@ -39,7 +51,7 @@ class CompanyApi {
 
         resolve(company);
       }, delay);
-    });
+    });*/
   }
 
   static deleteCompany(companyId) {

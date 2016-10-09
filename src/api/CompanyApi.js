@@ -1,5 +1,6 @@
 import delay from './delay';
-
+import firebase from 'firebase';
+import fireBaseInit from './fbInit';
 
 function replaceAll(str, find, replace) {
   return str.replace(new RegExp(find, 'g'), replace);
@@ -17,29 +18,16 @@ class CompanyApi {
 
   static saveCompany(company) {
     company = Object.assign({}, company); // to avoid manipulating object passed in.
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        // Simulate server-side validation
-        const minCompanyTitleLength = 1;
-        if (company.name.length < minCompanyTitleLength) {
-          reject(`Title must be at least ${minCompanyTitleLength} characters.`);
-        }
+    const companiesRef = fireBaseInit.ref('companies');
+    var newCompany = {};
+    newCompany = {
+      name: company.name,
+      description: company.description
+    }
+    
+    companiesRef.child(company.name).set({name: company.name,
+      description: company.description});  
 
-        if (company.id) {
-          const existingCompanyIndex = companies.findIndex(a => a.id == company.id);
-          companies.splice(existingCompanyIndex, 1, company);
-        } else {
-          //Just simulating creation here.
-          //The server would generate ids and watchHref's for new companies in a real app.
-          //Cloning so copy returned is passed by value rather than by reference.
-          company.id = generateId(company);
-          company.watchHref = `http://www.pluralsight.com/companies/${company.id}`;
-          companies.push(company);
-        }
-
-        resolve(company);
-      }, delay);
-    });
   }
 
   static deleteCompany(companyId) {

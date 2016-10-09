@@ -4,9 +4,13 @@ import LoadingDots from './LoadingDots';
 import Authpanel from './Authpanel';
 
 const Header = ({loading, loggedin}) => {
+
   return (
     <nav>
       {loggedin ? <IndexLink to="/" activeClassName="active">Groups</IndexLink> : <i>&nbsp;</i>}
+      &nbsp;&nbsp;&nbsp;
+      <IndexLink to="AddCompany" activeClassName="active">Add New Company</IndexLink>
+
       {loading && <LoadingDots interval={100} dots={20}/>}
 
       <Authpanel/>

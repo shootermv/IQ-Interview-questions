@@ -13,7 +13,6 @@ class HomePage extends React.Component {
 
   render() {
     const {groups} = this.props;
-    
     return (
       <div className="jumbotron">
        {groups.length>0 && <h1>Groups</h1>}

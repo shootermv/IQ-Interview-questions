@@ -1,7 +1,7 @@
 import * as types from '../actions/actionTypes';
 import initialState from './initialState';
 
-export default function courseReducer(state = initialState.groups, action) {
+export default function groupReducer(state = initialState.groups, action) {
   switch (action.type) {
     case types.LOAD_GROUPS_SUCCESS:
       return action.groups;
