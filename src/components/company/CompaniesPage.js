@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -18,9 +18,9 @@ class CompaniesPage extends React.Component {
 
   }
   render() {
-    console.log("this ", this)
+    //console.log("this ", this)
     const {companies} = this.props;
-    console.log(companies);
+    //console.log(companies);
     return (
       <CompanyList companies={companies}/>
     );
@@ -38,5 +38,11 @@ function mapDispatchToProps(dispatch) {
     loadCompanies: bindActionCreators(companyActions.loadCompanies, dispatch)
   };
 }
+
+CompaniesPage.propTypes = {
+ loadCompanies: PropTypes.object.isRequired,
+ companies: PropTypes.array.isRequired,
+ params: PropTypes.object
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(CompaniesPage);

@@ -28,4 +28,8 @@ function mapStateToProps(state, ownProps) {
   };
 }
 
+App.propTypes = {
+ loggedin: PropTypes.bool.isRequired
+};
+
 export default connect(mapStateToProps)(App);

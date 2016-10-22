@@ -34,4 +34,10 @@ function mapDispatchToProps(dispatch){
 	};
 }
 
+Authpanel.propTypes = {
+  auth: PropTypes.object.isRequired,
+  logoutUser: PropTypes.func.isRequired,
+  attemptLogin:PropTypes.func.isRequired
+};
+
 export default connect(mapStateToProps,mapDispatchToProps)(Authpanel);

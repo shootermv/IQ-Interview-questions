@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -33,6 +33,10 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(groupActions, dispatch)
   };
 }
+
+HomePage.propTypes = {
+  groups: PropTypes.array.isRequired
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
 
