@@ -1,16 +1,27 @@
 /* Styles */
 #app {
-  font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #4d4d4d;
-  min-width: 550px;
-  max-width: 850px;
-  margin: 0 auto;
+
+}
+
+.should-login-container{
+    display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.should-login-container .row{
+    margin: 0 auto;
+}
+
+.should-login-container .card{
+  color:#fff;
+  cursor:pointer;
 }
 
 a.active {
-  color: orange;
 }
 
 nav {
-  padding-top: 20px;
 }
