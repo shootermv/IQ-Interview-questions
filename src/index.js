@@ -1,4 +1,5 @@
 /*eslint-disable import/default */
+
 import 'babel-polyfill';
 import React from 'react';
 import { render } from 'react-dom';
@@ -13,14 +14,13 @@ import {loadQuestions} from './actions/questionActions';
 import {startListeningToAuth}  from './actions/authActions';
 
 
-
-import './styles/styles.css'; //Webpack can import CSS files too!
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import '../node_modules/toastr/build/toastr.min.css';
+import '../node_modules/materialize-css/dist/css/materialize.css';
+import '../node_modules/materialize-css/dist/js/materialize.js';
+import './styles/styles.css'; 
 
 const store = configureStore();
-store.dispatch(loadQuestions());
-store.dispatch(loadAuthors());
+//store.dispatch(loadQuestions());
+//store.dispatch(loadAuthors());
 //store.dispatch(loadGroups());
 //auth:
 store.dispatch(startListeningToAuth());
@@ -28,9 +28,6 @@ store.dispatch(startListeningToAuth());
 render(
   <Provider store={store}>
     <Router history={browserHistory} routes={routes}>
-      <Route path="/" component="{app}" />
-      
-      
     </Router>
   </Provider>,
   document.getElementById('app')
