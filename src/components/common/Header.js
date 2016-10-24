@@ -7,14 +7,15 @@ const Header = ({loading, loggedin}) => {
 
   return (
     <nav>
-      {loggedin ? <IndexLink to="/" activeClassName="active">Groups</IndexLink> : <i>&nbsp;</i>}
-      &nbsp;&nbsp;&nbsp;
-      <IndexLink to="AddCompany" activeClassName="active">Add New Company</IndexLink>
-
-      {loading && <LoadingDots interval={100} dots={20}/>}
-
-      <Authpanel/>
-    </nav>
+    <div className="nav-wrapper">
+      <IndexLink to="/" activeClassName="active">Logo</IndexLink>
+      <ul id="nav-mobile" className="right hide-on-med-and-down">
+        <li><IndexLink to="/" activeClassName="active">Groups</IndexLink></li>
+        <li><IndexLink to="AddCompany" activeClassName="active">Add New Company</IndexLink></li>
+        <li><Authpanel/></li>
+      </ul>
+    </div>
+  </nav>
   );
 };
 
