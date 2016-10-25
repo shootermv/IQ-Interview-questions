@@ -9,7 +9,7 @@ export function attemptLogin() {
 		dispatch({type:types.ATTEMPTING_LOGIN});
         firebase.auth().signInWithPopup(provider).then(authData => {
         if(authData.user.email.indexOf('tikalk') === -1){
-            alert('cant log in - only tikal member can do so')
+            alert('cant log in - only tikal member can do so');
             dispatch(this.logoutUser());
         }
         }).catch(error => {
