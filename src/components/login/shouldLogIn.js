@@ -6,7 +6,7 @@ class ShoulLogIn extends React.Component{
     render() {
         return (
             <div>
-            <h3 className="center-align">Tikal's Technical Experiance Repository</h3>
+            <h3 className="center-align">Tikal's Technical Experience Repository</h3>
             <div className="should-login-container valign-wrapper">
                 <div className="row valign-wrapper">
                     <div className="col s12 valign">

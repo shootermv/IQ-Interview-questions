@@ -8,7 +8,7 @@ const Header = ({loading, loggedin}) => {
   return (
     <nav>
     <div className="nav-wrapper">
-      <IndexLink to="/" activeClassName="active">Logo</IndexLink>
+      <IndexLink to="/" activeClassName="active">Experience Repository</IndexLink>
       <ul id="nav-mobile" className="right hide-on-med-and-down">
         <li><IndexLink to="/" activeClassName="active">Groups</IndexLink></li>
         <li><IndexLink to="AddCompany" activeClassName="active">Add New Company</IndexLink></li>
