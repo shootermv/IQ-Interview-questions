@@ -8,7 +8,6 @@ export function attemptLogin() {
     return (dispatch, getState) => {
 		dispatch({type:types.ATTEMPTING_LOGIN});
         firebase.auth().signInWithPopup(provider).then(authData => {
-        //nothing here yet
         if(authData.user.email.indexOf('tikalk') === -1){
             alert('cant log in - only tikal member can do so')
             dispatch(this.logoutUser());
@@ -33,11 +32,11 @@ export function startListeningToAuth() {
         dispatch({type:types.LOGOUT});
         firebase.auth().onAuthStateChanged((authData)=>{
             if (authData){
-                console.log('auth: ',authData) 
                 dispatch({
                     type: types.LOGIN_USER,
                     uid: authData.uid,
-                    username: authData.displayName 
+                    username: authData.displayName,
+                    photoURL: authData.photoURL
                 });
                 dispatch(loadGroups()); 
             } else {

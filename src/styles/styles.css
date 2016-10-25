@@ -11,6 +11,7 @@
   height: 100%;
   width: 100%;
 }
+
 .should-login-container .row{
     margin: 0 auto;
 }
@@ -20,8 +21,22 @@
   cursor:pointer;
 }
 
-a.active {
+.auth-panel img.login-img{
+    width: 40px;
+    height: 40px;
+    margin-top: 11px;
+    display: inline-block;
+    position: absolute;
+}
+.auth-panel .login-username{
+    margin-left:50px;
 }
 
-nav {
+.auth-panel .logout{
+    font-size:12px;
+    margin-right:10px;
+    text-decoration:underline;
+    cursor:pointer;
 }
+
+

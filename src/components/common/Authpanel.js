@@ -5,39 +5,44 @@ import * as authActions from '../../actions/authActions';
 import * as types from '../../actions/actionTypes';
 
 class Authpanel extends React.Component {
-  constructor(props, context) {
-    super(props, context);
-  }
-
-  render() {
-
-    const {auth} = this.props;
-    switch(auth.currently) {
-        case types.LOGIN_USER :
-        return (<a className="pull-right" onClick={this.props.logoutUser}>hi {auth.username}</a>);
-        case types.AWAITING_AUTH_RESPONSE :
-        return (<a className="pull-right"><i className="fa fa-spinner fa-spin"></i> authenticating...</a>);      
-       default: return <a className="pull-right" onClick={this.props.attemptLogin}>Log in</a>;
+    constructor(props, context) {
+        super(props, context);
     }
-  }
+
+    render() {
+        const {auth} = this.props;
+
+        return (
+            <div className="auth-panel">
+                <img src={auth.photoURL} alt="user photo url" className="circle responsive-img login-img"/>
+                <span className="login-username">{auth.username} &nbsp;</span>
+                <span className="logout" onClick={this.props.logoutUser}>logout</span>
+            </div>
+        );
+
+    }
 }
 
-function mapStateToProps(appState){
-	// This component will have access to `appState.auth` through `this.props.auth`
-	return {auth:appState.auth};
+function mapStateToProps(appState) {
+    // This component will have access to `appState.auth` through `this.props.auth`
+    return {auth: appState.auth};
 }
 
-function mapDispatchToProps(dispatch){
-	return {
-		attemptLogin: function(){ dispatch(authActions.attemptLogin()); },
-		logoutUser: function(){ dispatch(authActions.logoutUser()); }
-	};
+function mapDispatchToProps(dispatch) {
+    return {
+        attemptLogin: function () {
+            dispatch(authActions.attemptLogin());
+        },
+        logoutUser: function () {
+            dispatch(authActions.logoutUser());
+        }
+    };
 }
 
 Authpanel.propTypes = {
-  auth: PropTypes.object.isRequired,
-  logoutUser: PropTypes.func.isRequired,
-  attemptLogin:PropTypes.func.isRequired
+    auth: PropTypes.object.isRequired,
+    logoutUser: PropTypes.func.isRequired,
+    attemptLogin: PropTypes.func.isRequired
 };
 
-export default connect(mapStateToProps,mapDispatchToProps)(Authpanel);
+export default connect(mapStateToProps, mapDispatchToProps)(Authpanel);

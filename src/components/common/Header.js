@@ -1,9 +1,8 @@
 import React, {PropTypes} from 'react';
 import { Link, IndexLink } from 'react-router';
-import LoadingDots from './LoadingDots';
 import Authpanel from './Authpanel';
 
-const Header = ({loading, loggedin}) => {
+const Header = () => {
 
   return (
     <nav>
@@ -20,7 +19,6 @@ const Header = ({loading, loggedin}) => {
 };
 
 Header.propTypes = {
-  loading: PropTypes.bool.isRequired,
   loggedin: PropTypes.bool.isRequired
 };
 
