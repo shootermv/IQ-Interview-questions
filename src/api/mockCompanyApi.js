@@ -17,14 +17,14 @@ class CompanyApi {
   }
 
   static saveNewCompany(company) {
-    console.log("company ", company);
+    //console.log("company ", company);
     company = Object.assign({}, company); // to avoid manipulating object passed in.
 
     const companiesRef = fireBaseInit.ref('companies');
-    var newCompany = {};
+    let newCompany = {};
     newCompany[company.name].name = company.name;
     newCompany[company.name].description = company.description;
-    console.log("newCompany--> ", newCompany);
+    //console.log("newCompany--> ", newCompany);
     companiesRef.set({newCompany});  
     
 
@@ -56,13 +56,13 @@ class CompanyApi {
 
   static deleteCompany(companyId) {
     return new Promise((resolve, reject) => {
-      setTimeout(() => {
+     /* setTimeout(() => {
         const indexOfCompanyToDelete = companies.findIndex(company => {
           company.companyId == companyId;
         });
         companies.splice(indexOfCompanyToDelete, 1);
         resolve();
-      }, delay);
+      }, delay);*/
     });
   }
 }

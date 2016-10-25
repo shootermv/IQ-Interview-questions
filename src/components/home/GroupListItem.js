@@ -2,22 +2,23 @@ import React, {PropTypes} from 'react';
 import {Link} from 'react-router';
 
 const GroupListItem = ({group}) => {
-  var divStyle = {
-    height: '180px',
-    width: '100%',
-    display: 'block'
-  };
-  return (
-        <div className="col-md-3 col-xs-6">
-           <Link to={'/companies/' + group.id} className="thumbnail">
-             {group.name}
-           </Link>
-        </div>
-  );
+    return (
+        <Link to={'/companies/' + group.id}>
+            <div className="col s6 m4">
+                <div className="card blue-grey darken-1">
+                    <div className="card-content white-text">
+                        <br/>
+                        {group.name}
+                        <br/>
+                    </div>
+                </div>
+            </div>
+        </Link>
+    );
 };
 
 GroupListItem.propTypes = {
-  group: PropTypes.object.isRequired
+    group: PropTypes.object.isRequired
 };
 
 export default GroupListItem;

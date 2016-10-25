@@ -12,7 +12,7 @@ export function saveCompaniesSuccess() {
 
 export function saveNewCompany(companyObj){
   //return (dispatch, getState) => {
-      console.log("here");
+  //    console.log("here");
       //dispatch(beginAjaxCall());
       CompanyApi.saveCompany(companyObj);
       //dispatch(saveCompaniesSuccess(companiesList));    
@@ -20,11 +20,11 @@ export function saveNewCompany(companyObj){
 }
 
 export function loadCompanies(groupId) {
-  var currentGroupName = groupId;
-  var currentGroupObj = null;
-  var groupsList = JSON.parse(localStorage.getItem("groupsList"));
-  var groupIndex = 0;
-  for (var item in groupsList){
+  let currentGroupName = groupId;
+  let currentGroupObj = null;
+  let groupsList = JSON.parse(localStorage.getItem("groupsList"));
+  let groupIndex = 0;
+  for (let item in groupsList){
     if(groupsList[item].id === currentGroupName){
       currentGroupObj = groupsList[item];
     }
@@ -32,7 +32,7 @@ export function loadCompanies(groupId) {
 
   return (dispatch, getState) => {
       dispatch(beginAjaxCall());
-      var companiesList = CompanyApi.getAllCompanies(currentGroupObj);
+      let companiesList = CompanyApi.getAllCompanies(currentGroupObj);
       dispatch(loadCompaniesSuccess(companiesList));    
   };
 }
