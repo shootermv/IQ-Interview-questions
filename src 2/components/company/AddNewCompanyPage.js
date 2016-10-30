@@ -1,30 +1,30 @@
-import React, {propTypes} from 'react';
+import React from 'react';
 import Header from '../common/Header';
-import {connect, bindActionCreators} from 'react-redux';
+import {connect} from 'react-redux';
 import * as companyActions from '../../actions/companyActions';
 
 
 class AddNewCompanyPage extends React.Component {
 
    constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             companyName         : "",
             companyAddress      : "",
+            companyGroup        : "",
             companyDescription  : ""
         };
-
-        this.handleCompanyName = this.handleCompanyName.bind(this); 
-        this.handleCompanyDescription = this.handleCompanyDescription.bind(this);
-        this.clickTest = this.clickTest.bind(this);  
+        
     }
 
-  clickTest(){
-    let newCompanyObj = {
+  addNewCompany(){
+    debugger;
+    var newCompanyObj = {
       name          : this.state.companyName,
       address       : this.state.companyAddress,
+      group         : this.state.companyGroup.toLowerCase(),
       description   : this.state.companyDescription
-    };
+    }
     
     this.props.saveNewCompany(newCompanyObj);
   }
@@ -51,20 +51,29 @@ class AddNewCompanyPage extends React.Component {
         <p>
           <label style={{width:'150px'}}>Company Name:</label>
           <input type = "text"
-                 id = "txtCompanyName" onChange={this.handleCompanyName} />
+                 id = "txtCompanyName" onChange={this.handleCompanyName.bind(this)} />
         </p>
         <p>
           <label style={{width:'150px'}}>Company Address:</label>
           <input type = "text"
-                 id = "txtCompanyAddress" onChange={this.handleCompanyAddress} />
+                 id = "txtCompanyAddress" onChange={this.handleCompanyAddress.bind(this)} />
+        </p>
+        <p>
+          <label style={{width:'150px'}}>Group Name:</label>
+          <select style={{width:'150px'}}  onChange={this.handleCompanyGroup.bind(this)}>
+          {this.props.groupsListObj.map((item) => (
+            <option id={item.id} key={item.id}>{item.name}</option>
+          ))}
+             
+          </select>
         </p>
         <p>
           <label style={{width:'150px'}}>Comment:</label>
           <textarea id="txtComment"
                   rows="3"
-                  cols="80" onChange={this.handleCompanyDescription}></textarea>
+                  cols="80" onChange={this.handleCompanyDescription.bind(this)}></textarea>
         </p>
-        <p> <button id="btnSaveNewCompany" onClick={this.clickTest}>Add New Company</button> </p>
+        <p> <button id="btnSaveNewCompany" onClick={this.addNewCompany.bind(this)}>Add New Company</button> </p>
       </fieldset>
     );
   }
@@ -75,7 +84,5 @@ function mapStateToProps(state, ownProps) {
     groupsListObj : JSON.parse(localStorage.getItem("groupsList"))
   };
 }
-
-
 
 export default connect(mapStateToProps, companyActions)(AddNewCompanyPage);

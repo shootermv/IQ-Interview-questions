@@ -14,16 +14,18 @@ export function saveNewCompany(companyObj){
   return (dispatch, getState) => {
       dispatch(beginAjaxCall());
       CompanyApi.saveCompany(companyObj);
-      //dispatch(saveCompaniesSuccess(companiesList));    
+      var companiesList = CompanyApi.getAllCompanies(currentGroupObj);
+      dispatch(saveCompaniesSuccess(companiesList));    
   };
 }
 
 export function loadCompanies(groupId) {
-  let currentGroupName = groupId;
-  let currentGroupObj = null;
-  let groupsList = JSON.parse(localStorage.getItem("groupsList"));
-  let groupIndex = 0;
-  for (let item in groupsList){
+  var currentGroupName = groupId;
+  var currentGroupObj = null;
+  var groupsList = JSON.parse(localStorage.getItem("groupsList"));
+  var groupIndex = 0;
+  console.log("groupsList--> ", groupsList);
+  for (var item in groupsList){
     if(groupsList[item].id === currentGroupName){
       currentGroupObj = groupsList[item];
     }
@@ -31,8 +33,7 @@ export function loadCompanies(groupId) {
 
   return (dispatch, getState) => {
       dispatch(beginAjaxCall());
-      console.log("nana--> ", currentGroupObj);
-      let companiesList = CompanyApi.getAllCompanies(currentGroupObj);
+      var companiesList = CompanyApi.getAllCompanies(currentGroupObj);
       dispatch(loadCompaniesSuccess(companiesList));    
   };
 }

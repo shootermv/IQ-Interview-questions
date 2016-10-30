@@ -13,35 +13,34 @@ const generateId = (company) => {
 
 class CompanyApi {
   static getAllCompanies(currentGroupObj) {
-    console.log("companyAPI-> ", currentGroupObj);
     return currentGroupObj.companies;
   }
 
   static saveCompany(company) {
     company = Object.assign({}, company); // to avoid manipulating object passed in.
-    const companiesRef = fireBaseInit.ref('companies');
-    let newCompany = {};
-    newCompany = {
-      name: company.name,
-      description: company.description
-    };
-    
+    const companiesRef  = fireBaseInit.ref('companies');
+    const groupsRef     = fireBaseInit.ref('groups');
+  
     companiesRef.child(company.name).set({name: company.name,
-      description: company.description});  
+      description: company.description});
+      console.log(company.group);
+      
+    groupsRef.child(company.group).child('companies').child(company.name).set({name: company.name,
+      description: company.description});    
 
   }
 
-  static deleteCompany(companyId) {
+  /*static deleteCompany(companyId) {
     return new Promise((resolve, reject) => {
-     /* setTimeout(() => {
+      setTimeout(() => {
         const indexOfCompanyToDelete = companies.findIndex(company => {
           company.companyId == companyId;
         });
         companies.splice(indexOfCompanyToDelete, 1);
         resolve();
-      }, delay);*/
+      }, delay);
     });
-  }
+  }*/
 }
 
 export default CompanyApi;
