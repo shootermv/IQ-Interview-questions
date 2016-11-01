@@ -15,6 +15,7 @@ class CompaniesPage extends React.Component {
   }
   componentDidMount () {
     this.props.loadCompanies(this.props.params.groupId);
+    localStorage.setItem("currentGroup", this.props.params.groupId);
 
   }
   render() {

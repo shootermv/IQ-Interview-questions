@@ -20,6 +20,7 @@ class AddNewCompanyPage extends React.Component {
     }
 
   clickTest(){
+    debugger;
     let newCompanyObj = {
       name          : this.state.companyName,
       address       : this.state.companyAddress,

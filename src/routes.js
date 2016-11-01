@@ -8,6 +8,7 @@ import QuestionsPage from './components/course/QuestionsPage';
 import ManageCoursePage from './components/course/ManageCoursePage'; //eslint-disable-line import/no-named-as-default
 
 import AddNewCompanyPage from './components/company/AddNewCompanyPage';
+import viewQuestionsPage from './components/questions/viewQuestionsPage';
 
 export default (
   <Route path="/" component={App}>
@@ -18,5 +19,6 @@ export default (
     <Route path="course/:id" component={ManageCoursePage} />
     <Route path="about" component={AboutPage} />
     <Route path="AddCompany" component={AddNewCompanyPage} />
+    <Route path="viewQuestions/:companyName" component={viewQuestionsPage} />
   </Route>
 );
