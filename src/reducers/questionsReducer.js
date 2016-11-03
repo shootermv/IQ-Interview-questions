@@ -1,10 +1,11 @@
 import * as types from '../actions/actionTypes';
 import initialState from './initialState';
 
-export default function questionReducer(state = initialState.questions, action) {
+export default function questionsReducer(state = initialState, action) {
   switch (action.type) {
     case types.LOAD_QUESTIONS_SUCCESS:
-      return action.questions;
+    console.log("baba here");
+      return action.questionsList;
 
     default:
       return state;

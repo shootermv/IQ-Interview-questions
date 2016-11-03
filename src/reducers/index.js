@@ -5,7 +5,7 @@ import authors from './authorReducer';
 import auth from './authReducer';
 import groups from './groupReducer';
 import ajaxCallsInProgress from './ajaxStatusReducer';
-import questions from './questionReducer';
+import questions from './questionsReducer';
 const rootReducer = combineReducers({
   courses,
   authors,

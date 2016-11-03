@@ -1,47 +1,82 @@
-import React, {propTypes} from 'react';
+import React, {PropTypes} from 'react';
 import Header from '../common/Header';
-import {connect, bindActionCreators} from 'react-redux';
-import * as companyActions from '../../actions/companyActions';
-import viewQuestions from '../../api/viewQuestions.js';
-
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as questionActions from '../../actions/questionActions';
 
 class viewQuestionsPage extends React.Component {
-
    constructor(props) {
         super(props);
         this.state = {
           companyName : this.props.params.companyName
         }
-       
-        viewQuestions.getAllQuestionsByCompanyName(this.state.companyName).then(groups => {
-          console.log(groups)
-        }).catch(error => {
-          throw(error);
-        });
-        
+        this.props.questionActions.loadQuestions(this.state.companyName);
     }
 
-
-
-  
-  render() {
-    return (
-      <div>
-        {this.props.baba}
-        <div>{this.state.companyName}</div>
+ questionList(questionList){
+  return (
+      <div className="row" style={{marginTop:"5px"}}>
+      {questionList.map(item =>
+          <div className="col s12 m6">
+            <div className="card blue-grey darken-1">
+                <div className="card-content white-text">
+                <span className="card-title">{item.title}</span>
+                <p>{item.answer}</p>
+                </div>
+                <div className="card-action">
+                <a href="#">view Answer And Coments</a>
+                </div>
+            </div>
+          </div>
+          )}
       </div>
-      
     );
+  };
+
+  componentWillMount(){
+    
   }
-  
+
+  render() {
+    const {questionsList} = this.props;
+    const qList = [];
+    if(questionsList.length > 0){
+      const qList = this.questionList(questionsList);
+      return (
+        <div>
+          <nav style={{backgroundColor: 'green', fontSize: '11px',height: '30px',lineHeight:"30px"}}>
+            <div className="nav-wrapper">
+              <div className="col s12" style={{paddingLeft:"10px"}}>
+                <a href="#!" className="breadcrumb" style={{fontSize:"13px"}}>{this.props.currentGroupName}</a>
+                <a href="#!" className="breadcrumb" style={{fontSize:"13px"}}>{this.state.companyName}</a>
+              </div>
+            </div>
+          </nav>
+          {qList}
+        </div>
+      );
+    }else{
+      return (<div></div>);
+    }
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    questionActions: bindActionCreators(questionActions, dispatch)
+  };
 }
 
 function mapStateToProps(state, ownProps) {
   return {
-    baba: ownProps.params.companyName
+    baba              : ownProps.params.companyName,
+    questionsList     : state.questions,
+    currentGroupName  : localStorage.getItem("currentGroup") 
   }
 }
 
+viewQuestionsPage.propTypes = {
+  questionList: PropTypes.object.isRequired
+};
 
-
-export default connect(mapStateToProps)(viewQuestionsPage);
+export default connect(mapStateToProps, mapDispatchToProps)(viewQuestionsPage);
