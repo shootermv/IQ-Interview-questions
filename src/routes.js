@@ -9,6 +9,7 @@ import ManageCoursePage from './components/course/ManageCoursePage'; //eslint-di
 
 import AddNewCompanyPage from './components/company/AddNewCompanyPage';
 import viewQuestionsPage from './components/questions/viewQuestionsPage';
+import addNewQuestionPage from './components/questions/addNewQuestionPage';
 
 export default (
   <Route path="/" component={App}>
@@ -20,5 +21,6 @@ export default (
     <Route path="about" component={AboutPage} />
     <Route path="AddCompany" component={AddNewCompanyPage} />
     <Route path="viewQuestions/:companyName" component={viewQuestionsPage} />
+    <Route path="addnNewQuestions/:groupName/:companyName" component={addNewQuestionPage} />
   </Route>
 );

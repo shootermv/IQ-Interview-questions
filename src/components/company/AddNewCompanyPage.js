@@ -16,11 +16,10 @@ class AddNewCompanyPage extends React.Component {
 
         this.handleCompanyName = this.handleCompanyName.bind(this); 
         this.handleCompanyDescription = this.handleCompanyDescription.bind(this);
-        this.clickTest = this.clickTest.bind(this);  
+        this.saveNewCompany = this.saveNewCompany.bind(this);  
     }
 
-  clickTest(){
-    debugger;
+  saveNewCompany(){
     let newCompanyObj = {
       name          : this.state.companyName,
       address       : this.state.companyAddress,
@@ -65,7 +64,7 @@ class AddNewCompanyPage extends React.Component {
                   rows="3"
                   cols="80" onChange={this.handleCompanyDescription}></textarea>
         </p>
-        <p> <button id="btnSaveNewCompany" onClick={this.clickTest}>Add New Company</button> </p>
+        <p> <button id="btnSaveNewCompany" onClick={this.saveNewCompany}>Add New Company</button> </p>
       </fieldset>
     );
   }

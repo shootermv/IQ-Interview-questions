@@ -42,6 +42,7 @@ class viewQuestionsPage extends React.Component {
     const qList = [];
     if(questionsList.length > 0){
       const qList = this.questionList(questionsList);
+      const newQuestionUrl = this.props.newQuestionUrl;
       return (
         <div>
           <nav style={{backgroundColor: 'green', fontSize: '11px',height: '30px',lineHeight:"30px"}}>
@@ -53,6 +54,7 @@ class viewQuestionsPage extends React.Component {
             </div>
           </nav>
           {qList}
+          <div><a href={newQuestionUrl} style={{textDecoration:"underline"}}> Add New Question </a></div>
         </div>
       );
     }else{
@@ -69,9 +71,10 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state, ownProps) {
   return {
-    baba              : ownProps.params.companyName,
+    companyName       : ownProps.params.companyName,
     questionsList     : state.questions,
-    currentGroupName  : localStorage.getItem("currentGroup") 
+    currentGroupName  : localStorage.getItem("currentGroup"),
+    newQuestionUrl    : "../addnNewQuestions/" + localStorage.getItem("currentGroup") + "/" + ownProps.params.companyName
   }
 }
 
