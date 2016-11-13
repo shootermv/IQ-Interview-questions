@@ -1,6 +1,7 @@
 import delay from './delay';
 import firebase from 'firebase';
 import fireBaseInit from './fbInit';
+import { browserHistory } from 'react-router'
 
 class addNewQuestionApi{
     static convertToArray(data) {
@@ -18,6 +19,7 @@ class addNewQuestionApi{
         };
         refObj.child(question.questionTitle).set({answer: question.questionAnswer,
         description: question.questionTitle});  
+        browserHistory.push('/viewQuestions/'+companyName);
 
     }
 }
