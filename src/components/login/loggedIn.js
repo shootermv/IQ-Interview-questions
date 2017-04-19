@@ -1,10 +1,10 @@
-import React, {PropTypes} from 'react';
-import {connect} from 'react-redux';
+import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 import * as authActions from './../../actions/authActions';
 import Header from './../common/Header';
 
-class LoggedIn extends React.Component{
-   
+class LoggedIn extends React.Component {
+
     render() {
         return (
             <div>
@@ -14,5 +14,7 @@ class LoggedIn extends React.Component{
     }
 }
 
-
+LoggedIn.propTypes = {
+    children: PropTypes.node
+};
 export default LoggedIn;

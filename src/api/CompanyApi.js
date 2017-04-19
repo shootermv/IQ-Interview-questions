@@ -13,7 +13,6 @@ const generateId = (company) => {
 
 class CompanyApi {
   static getAllCompanies(currentGroupObj) {
-    console.log("companyAPI-> ", currentGroupObj);
     return currentGroupObj.companies;
   }
 
@@ -25,21 +24,23 @@ class CompanyApi {
       name: company.name,
       description: company.description
     };
-    
-    companiesRef.child(company.name).set({name: company.name,
-      description: company.description});  
+
+    companiesRef.child(company.name).set({
+      name: company.name,
+      description: company.description
+    });
 
   }
 
   static deleteCompany(companyId) {
     return new Promise((resolve, reject) => {
-     /* setTimeout(() => {
-        const indexOfCompanyToDelete = companies.findIndex(company => {
-          company.companyId == companyId;
-        });
-        companies.splice(indexOfCompanyToDelete, 1);
-        resolve();
-      }, delay);*/
+      /* setTimeout(() => {
+         const indexOfCompanyToDelete = companies.findIndex(company => {
+           company.companyId == companyId;
+         });
+         companies.splice(indexOfCompanyToDelete, 1);
+         resolve();
+       }, delay);*/
     });
   }
 }

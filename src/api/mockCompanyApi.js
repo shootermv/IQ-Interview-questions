@@ -13,7 +13,6 @@ const generateId = (company) => {
 
 class CompanyApi {
   static getAllCompanies(currentGroupObj) {
-    console.log("Comp_1111--> ", currentGroupObj);
     return currentGroupObj.companies;
   }
 
@@ -26,8 +25,8 @@ class CompanyApi {
     newCompany[company.name].name = company.name;
     newCompany[company.name].description = company.description;
     //console.log("newCompany--> ", newCompany);
-    companiesRef.set({newCompany});  
-    
+    companiesRef.set({ newCompany });
+
 
 
     /*return new Promise((resolve, reject) => {
@@ -57,13 +56,13 @@ class CompanyApi {
 
   static deleteCompany(companyId) {
     return new Promise((resolve, reject) => {
-     /* setTimeout(() => {
-        const indexOfCompanyToDelete = companies.findIndex(company => {
-          company.companyId == companyId;
-        });
-        companies.splice(indexOfCompanyToDelete, 1);
-        resolve();
-      }, delay);*/
+      /* setTimeout(() => {
+         const indexOfCompanyToDelete = companies.findIndex(company => {
+           company.companyId == companyId;
+         });
+         companies.splice(indexOfCompanyToDelete, 1);
+         resolve();
+       }, delay);*/
     });
   }
 }
