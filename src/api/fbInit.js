@@ -3,16 +3,10 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {browserHistory} from 'react-router';
 import firebase from 'firebase';
-
+import config from '../firebase/config';
 class fbInitClass{
     static getFBInit(){
-        //const firebaseInitObj = null;
-        let config = {
-            apiKey: "AIzaSyA0S2XqMwydPVX1Kvt0rCQj1Jg4dSz-fmM",
-            authDomain: "tikaliq.firebaseapp.com",
-            databaseURL: "https://tikaliq.firebaseio.com",
-            storageBucket: "tikaliq.appspot.com"
-        };
+        //const firebaseInitObj = null
             
         let firebaseInitObj = firebase.initializeApp(config);
         return firebaseInitObj;
