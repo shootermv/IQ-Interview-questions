@@ -17,6 +17,7 @@ class AddNewCompanyPage extends React.Component {
     this.handleCompanyName = this.handleCompanyName.bind(this);
     this.handleCompanyDescription = this.handleCompanyDescription.bind(this);
     this.saveNewCompany = this.saveNewCompany.bind(this);
+    this.handleCompanyAddress = this.handleCompanyAddress.bind(this)
   }
 
   saveNewCompany() {
