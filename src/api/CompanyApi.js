@@ -17,20 +17,26 @@ class CompanyApi {
   }
 
   static saveCompany(company) {
-    company = Object.assign({}, company); // to avoid manipulating object passed in.
-    const companiesRef = fireBaseInit.ref('companies');
-    let newCompany = {};
-    newCompany = {
-      name: company.name,
-      description: company.description
-    };
+  return new Promise((resolve, reject) => {
+      company = Object.assign({}, company); // to avoid manipulating object passed in.
+      const companiesRef = fireBaseInit.ref('companies');
+      let newCompany = {};
+      newCompany = {
+        name: company.name,
+        description: company.description
+      };
 
-    companiesRef.child(company.name).set({
-      name: company.name,
-      description: company.description
-    });
+      companiesRef.child(company.name).set({
+        name: company.name,
+        description: company.description
+      });
 
-  }
+      companiesRef.on('value', snapVal =>
+          resolve(snapVal)
+      , e => reject(e));
+
+  });
+}
 
   static deleteCompany(companyId) {
     return new Promise((resolve, reject) => {
