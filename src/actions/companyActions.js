@@ -6,15 +6,24 @@ export function loadCompaniesSuccess(companies) {
   return { type: types.LOAD_COMPANIES_SUCCESS, companies };
 }
 
-export function saveCompaniesSuccess() {
-  return { type: types.SAVE_COMPANIES_SUCCESS };
-}
+//export function saveCompaniesSuccess() {
+//  return { type: types.SAVE_COMPANIES_SUCCESS };
+//}
 
 export function saveNewCompany(companyObj) {
   return (dispatch, getState) => {
-    dispatch(beginAjaxCall());
-    CompanyApi.saveCompany(companyObj);
-    //dispatch(saveCompaniesSuccess(companiesList));    
+    return new Promise((resolve, reject) => {
+        dispatch(beginAjaxCall());
+        CompanyApi.saveCompany(companyObj)
+        .then(() => {
+          resolve();
+        })
+        .catch((e) => {
+         console.log(e);
+         reject(e);
+        });
+    })
+    //dispatch(saveCompaniesSuccess(companiesList));
   };
 }
 

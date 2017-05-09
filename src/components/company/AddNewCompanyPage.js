@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import Header from '../common/Header';
 import { connect, bindActionCreators } from 'react-redux';
 import * as companyActions from '../../actions/companyActions';
-
+import {browserHistory} from 'react-router';
 
 class AddNewCompanyPage extends React.Component {
 
@@ -26,7 +26,13 @@ class AddNewCompanyPage extends React.Component {
       description: this.state.companyDescription
     };
 
-    this.props.saveNewCompany(newCompanyObj);
+    this.props.saveNewCompany(newCompanyObj)
+    .then(() => {
+        browserHistory.push('/');
+    })
+    .catch( e => {
+      console.log(e);
+    });
   }
 
   handleCompanyName(e) {
@@ -47,7 +53,7 @@ class AddNewCompanyPage extends React.Component {
 
   render() {
     return (
-      <fieldset style={{ marginTop: '30px' }}>
+      <fieldset>
         <p>
           <label style={{ width: '150px' }}>Company Name:</label>
           <input type="text"

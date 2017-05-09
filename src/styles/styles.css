@@ -3,6 +3,35 @@
 
 }
 
+#app .container {
+ width: 99%;
+}
+
+#app .container .row {
+padding: 40px 40px;
+}
+
+.header {
+    color: black;
+    background-color: gainsboro;
+}
+
+.logo {
+   content:url(https://www.tikalk.com/assets/logo-1bb9a466c9d195c148557434c3437446.png);
+   padding: 2px 7px;
+
+}​
+
+.java-logo {
+ content:url(http://zdnet3.cbsistatic.com/hub/i/r/2014/09/18/a6e0c35b-3f36-11e4-b6a0-d4ae52e95e57/thumbnail/770x578/aa34263fd29aad364955faf94cfaf451/oracle-is-taking-good-care-of-java-post-sun-says-idc.jpg);
+  }
+
+nav {
+color: black;
+}
+nav ul a {
+ color: black;
+}
 .should-login-container{
     display: flex;
   position: absolute;
@@ -39,4 +68,9 @@
     cursor:pointer;
 }
 
-
+fieldset {
+      margin-top: 27px;
+      margin-left: 20px;
+      width: 50%;
+      border: 0px solid #c0c0c0;
+}
