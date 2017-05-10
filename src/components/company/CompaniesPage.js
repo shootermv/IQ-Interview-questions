@@ -10,7 +10,7 @@ import CompanyList from './CompanyList';
 class CompaniesPage extends React.Component {
   constructor(props, context) {
     // save group name in localstorage
-    
+
     super(props, context);
   }
   componentDidMount () {
@@ -23,7 +23,12 @@ class CompaniesPage extends React.Component {
     const {companies} = this.props;
     //console.log(companies);
     return (
-      <CompanyList companies={companies}/>
+    <div className="companies-container">
+       <span className="add-company">
+       <i className="fa fa-plus" aria-hidden="true">  </i> <Link to="AddCompany">NEW COMPANY</Link>
+       </span>
+       <CompanyList companies={companies}/>
+    </div>
     );
   }
 }

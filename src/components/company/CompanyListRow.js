@@ -3,9 +3,9 @@ import {Link} from 'react-router';
 //company.watchHref
 const CompanyListRow = ({company}) => {
   return (
-    <tr>
-      <td><a href={'/viewQuestions/'+company.name}>Watch</a></td>
-      <td><Link to={'/company/' + company.id}>{company.name}</Link></td>
+    <tr className="table-entities">
+      <td><a href={'/viewQuestions/'+company.name}><i className="fa fa-eye" aria-hidden="true"></i></a></td>
+      <td><span>{company.name}</span></td>
       <td>{company.description}</td>
     </tr>
   );

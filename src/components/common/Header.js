@@ -11,7 +11,6 @@ const Header = () => {
       <span className="logo"> logo</span>
         <ul id="nav-mobile" className="right hide-on-med-and-down">
           <li><IndexLink to="/" activeClassName="active">HOME</IndexLink></li>
-          <li><IndexLink to="AddCompany" activeClassName="active">NEW COMPANY</IndexLink></li>
           <li><Authpanel/></li>
         </ul>
       </div>

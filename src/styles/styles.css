@@ -82,3 +82,14 @@ fieldset {
 .blue-grey.darken-1 :hover {
     background-color: #607D8B !important;
 }
+
+.companies-container {
+    padding: 10px;
+}
+.add-company {
+  color: #039BE5
+}
+
+.table-entities {
+  text-transform: capitalize;
+}
