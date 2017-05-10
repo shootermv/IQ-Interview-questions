@@ -1,14 +1,14 @@
 import React, {PropTypes} from 'react';
-import { Link, IndexLink } from 'react-router';
+import { IndexLink } from 'react-router';
 import Authpanel from './Authpanel';
 
-const Header = () => {
 
+const Header = () => {
   return (
     <div className="header-container">
     <nav className="header">
       <div>
-      <span className="logo"> logo</span>
+      <span className="logo"><img src={require('../../img/logo.png')} /></span>
         <ul id="nav-mobile" className="right hide-on-med-and-down">
           <li><IndexLink to="/" activeClassName="active">HOME</IndexLink></li>
           <li><Authpanel/></li>
@@ -16,7 +16,6 @@ const Header = () => {
       </div>
     </nav>
     </div>
-
   );
 };
 
