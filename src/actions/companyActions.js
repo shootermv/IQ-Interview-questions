@@ -6,10 +6,6 @@ export function loadCompaniesSuccess(companies) {
   return { type: types.LOAD_COMPANIES_SUCCESS, companies };
 }
 
-//export function saveCompaniesSuccess() {
-//  return { type: types.SAVE_COMPANIES_SUCCESS };
-//}
-
 export function saveNewCompany(companyObj) {
   return (dispatch, getState) => {
     return new Promise((resolve, reject) => {
@@ -23,7 +19,6 @@ export function saveNewCompany(companyObj) {
          reject(e);
         });
     })
-    //dispatch(saveCompaniesSuccess(companiesList));
   };
 }
 
