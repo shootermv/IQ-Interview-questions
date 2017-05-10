@@ -16,6 +16,10 @@ padding: 40px 40px;
     background-color: gainsboro;
 }
 
+.header-container {
+   padding-top: 3px;
+}
+
 .logo {
    content:url(https://www.tikalk.com/assets/logo-1bb9a466c9d195c148557434c3437446.png);
    padding: 2px 7px;
@@ -73,4 +77,8 @@ fieldset {
       margin-left: 20px;
       width: 50%;
       border: 0px solid #c0c0c0;
+}
+
+.blue-grey.darken-1 :hover {
+    background-color: #607D8B !important;
 }
