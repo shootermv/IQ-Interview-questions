@@ -5,7 +5,7 @@ import Authpanel from './Authpanel';
 const Header = () => {
 
   return (
-    <div>
+    <div className="header-container">
     <nav className="header">
       <div>
       <span className="logo"> logo</span>
